@@ -15,18 +15,20 @@ internal class GameTest() {
 
 
     @Test
-    fun `test that decide result returns win when paper is played`() {
-        assertEquals(game.decideWinner(paperAction), winResult)
+    fun `test that decideWinner method implements the rules correctly`() {
+        assertEquals(game.decideWinner(paperAction, rockAction), winResult)
+        assertEquals(game.decideWinner(rockAction, rockAction), drawResult)
+        assertEquals(game.decideWinner(scissorAction, rockAction), loseResult)
+
+        assertEquals(game.decideWinner(paperAction, paperAction), drawResult)
+        assertEquals(game.decideWinner(rockAction, paperAction), loseResult)
+        assertEquals(game.decideWinner(scissorAction, paperAction), winResult)
+
+        assertEquals(game.decideWinner(paperAction, scissorAction), loseResult)
+        assertEquals(game.decideWinner(rockAction, scissorAction), winResult)
+        assertEquals(game.decideWinner(scissorAction, scissorAction), drawResult)
     }
 
-    @Test
-    fun `test that decide result returns draw when rock is played`() {
-        assertEquals(game.decideWinner(rockAction), drawResult)
-    }
 
-    @Test
-    fun `test that decide result returns lose when scissor is played`() {
-        assertEquals(game.decideWinner(scissorAction), loseResult)
-    }
 
 }

@@ -1,4 +1,3 @@
-import java.lang.Exception
 import kotlin.random.Random
 
 class Game {
@@ -11,24 +10,47 @@ class Game {
         ROCK, PAPER, SCISSOR
     }
 
-
+    /**
+     * This method randomly selects and returns one of three GameAction values.
+     */
     fun randomActionSelector(): GameAction {
-
-        return when(Random.nextDouble(3.0)) {
-            in 0.0..1.0 -> GameAction.ROCK
-            in 1.0..2.0 -> GameAction.PAPER
-            in 2.0..3.0 -> GameAction.SCISSOR
-            else -> throw Throwable("unexpected case of random double generation")
+        return when(Random.nextInt(GameAction.values().size)) {
+            0 -> GameAction.ROCK
+            1 -> GameAction.PAPER
+            2 -> GameAction.SCISSOR
+            else -> throw Throwable("Unexpected random integer generated.")
         }
-
     }
 
-    fun decideWinner(randomAction: GameAction): GameResult {
+    /**
+     * Accepts two parameters as actions of two players
+     *
+     * @return game result for player one
+     */
+    fun decideWinner(playerOneAction: GameAction, playerTwoAction: GameAction): GameResult {
 
-        return when (randomAction) {
-            GameAction.PAPER -> GameResult.WIN
-            GameAction.ROCK -> GameResult.DRAW
-            GameAction.SCISSOR -> GameResult.LOSE
+        when(playerOneAction) {
+            GameAction.SCISSOR -> {
+                return when(playerTwoAction) {
+                    GameAction.PAPER -> GameResult.WIN
+                    GameAction.ROCK -> GameResult.LOSE
+                    else -> GameResult.DRAW
+                }
+            }
+            GameAction.ROCK -> {
+                return when (playerTwoAction) {
+                    GameAction.PAPER -> GameResult.LOSE
+                    GameAction.SCISSOR -> GameResult.WIN
+                    else -> GameResult.DRAW
+                }
+            }
+            GameAction.PAPER -> {
+                return when (playerTwoAction) {
+                    GameAction.SCISSOR -> GameResult.LOSE
+                    GameAction.ROCK -> GameResult.WIN
+                    else -> GameResult.DRAW
+                }
+            }
         }
     }
 
