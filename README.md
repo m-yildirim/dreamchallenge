@@ -1,4 +1,4 @@
-# dreamchallenge
+# challenge
 
 This is a small project written as part of a job application.
 
