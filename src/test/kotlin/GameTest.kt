@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class GameTest() {
+internal class GameTest {
 
     private val game = Game()
 
@@ -13,22 +13,18 @@ internal class GameTest() {
     private val loseResult = Game.GameResult.LOSE
     private val drawResult = Game.GameResult.DRAW
 
-
     @Test
     fun `test that decideWinner method implements the rules correctly`() {
-        assertEquals(game.decideWinner(paperAction, rockAction), winResult)
-        assertEquals(game.decideWinner(rockAction, rockAction), drawResult)
-        assertEquals(game.decideWinner(scissorAction, rockAction), loseResult)
+        assertEquals(game.decideGameResult(paperAction, rockAction), winResult)
+        assertEquals(game.decideGameResult(rockAction, rockAction), drawResult)
+        assertEquals(game.decideGameResult(scissorAction, rockAction), loseResult)
 
-        assertEquals(game.decideWinner(paperAction, paperAction), drawResult)
-        assertEquals(game.decideWinner(rockAction, paperAction), loseResult)
-        assertEquals(game.decideWinner(scissorAction, paperAction), winResult)
+        assertEquals(game.decideGameResult(paperAction, paperAction), drawResult)
+        assertEquals(game.decideGameResult(rockAction, paperAction), loseResult)
+        assertEquals(game.decideGameResult(scissorAction, paperAction), winResult)
 
-        assertEquals(game.decideWinner(paperAction, scissorAction), loseResult)
-        assertEquals(game.decideWinner(rockAction, scissorAction), winResult)
-        assertEquals(game.decideWinner(scissorAction, scissorAction), drawResult)
+        assertEquals(game.decideGameResult(paperAction, scissorAction), loseResult)
+        assertEquals(game.decideGameResult(rockAction, scissorAction), winResult)
+        assertEquals(game.decideGameResult(scissorAction, scissorAction), drawResult)
     }
-
-
-
 }

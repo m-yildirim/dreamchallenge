@@ -23,11 +23,13 @@ class Game {
     }
 
     /**
-     * Accepts two parameters as actions of two players
+     * Decides game result for first player.
      *
-     * @return game result for player one
+     * @param playerOneAction player one's action
+     * @param playerTwoAction player two's action
+     * @return [GameResult] for player one
      */
-    fun decideWinner(playerOneAction: GameAction, playerTwoAction: GameAction): GameResult {
+    fun decideGameResult(playerOneAction: GameAction, playerTwoAction: GameAction): GameResult {
 
         when(playerOneAction) {
             GameAction.SCISSOR -> {
@@ -53,5 +55,4 @@ class Game {
             }
         }
     }
-
 }

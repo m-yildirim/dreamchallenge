@@ -17,7 +17,6 @@ internal class ExecutionTest {
 
         execution.executeGame(1)
         assertEquals(1, execution.draws + execution.rockPlayingPlayerWins + execution.randomlyPlayingPlayerWins)
-
     }
 
     @Test
@@ -25,7 +24,6 @@ internal class ExecutionTest {
 
         execution.executeGame(0)
         assertEquals(0, execution.draws + execution.rockPlayingPlayerWins + execution.randomlyPlayingPlayerWins)
-
     }
 
     @Test
@@ -34,7 +32,6 @@ internal class ExecutionTest {
         assertThrows(Exception::class.java) {
             execution.executeGame(-5)
         }
-
     }
 
     @Test
@@ -43,7 +40,6 @@ internal class ExecutionTest {
         assertThrows(Exception::class.java) {
             execution.executeGame(999999999)
         }
-
     }
 
     @Test
@@ -52,6 +48,5 @@ internal class ExecutionTest {
         val randomNumberOfGames = Random.nextInt(150)
         execution.executeGame(randomNumberOfGames)
         assertEquals(randomNumberOfGames, execution.draws + execution.rockPlayingPlayerWins + execution.randomlyPlayingPlayerWins)
-
     }
 }
